@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    font-family:sans-serif;
+    text-align:center;
+    background:#ffe6f0;
+}
+
+.page{
+    display:none;
+    padding:40px 20px;
+}
+
+.active{
+    display:block;
+}
+
+button{
+    padding:12px 25px;
+    font-size:16px;
+    border:none;
+    border-radius:10px;
+    background:#ff4d88;
+    color:white;
+    cursor:pointer;
+}
+
+input{
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+</style>
+</head>
+
+<body>
+
+<!-- หน้าเริ่ม -->
+<div id="startScreen" class="page active">
+    <h1>กดปุ่มเพื่อเริ่ม 💖</h1>
+    <button onclick="startLove()">เริ่มเลย</button>
+</div>
+
+<!-- หน้า 2 -->
+<div id="page2" class="page">
+<h2>🌻Happy Valentine's Day🌹</h2>
+<p>
+สุขสันต์วันวาเลนไทน์นะเธอ ขอให้เธออยู่เป็นของขวัญวันวาเลนไทน์ให้เค้าแบบนี้ไปทุกๆปีเลยนะ<br><br>
+อยากให้เธอรู้ว่าเธอยังมีเค้าอยู่ข้างๆเสมอ<br><br>
+ขอบคุณนะ<br>
+ขอบคุณที่เข้ามาในชีวิต<br>
+ขอบคุณที่เข้ามาสร้างรอยยิ้ม<br>
+ขอบคุณที่คอยเป็นเชฟโชน<br>
+ขอบคุณที่โอบกอดเค้าด้วยความรัก<br>
+ขอบคุณที่คอยอยู่ข้างๆเค้า<br>
+ขอบคุณทุกอย่างเลยนะ<br>
+และขอบคุณที่ยังไม่ไปไหนนะ<br><br>
+เค้ารู้สึกโชคดีตั้งแต่เธอเข้ามาเลย<br>
+เค้าอยากมีเธอตลอดไปเลยนะ
+</p>
+
+<button onclick="nextPage(3)">ต่อไป</button>
+</div>
+
+<!-- หน้า 3 -->
+<div id="page3" class="page">
+<h2>😊-เค้ารักเธอน๊าคนเก่งของเค้า อยู่กับเค้าไปนานๆนะ-❤️</h2>
+</div>
+
+<!-- YouTube ซ่อน -->
+<div id="player"></div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+let player;
+
+function onYouTubeIframeAPIReady(){
+    player = new YT.Player('player',{
+        height:'0',
+        width:'0',
+        videoId:'guCCAF-fkNI',
+        playerVars:{
+            autoplay:0,
+            controls:0,
+            start:20
+        }
+    });
+}
+
+function startLove(){
+    document.getElementById("startScreen").classList.remove("active");
+    document.getElementById("page2").classList.add("active");
+
+    if(player){
+        player.seekTo(20);
+        player.playVideo();
+    }
+}
+
+function nextPage(num){
+    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+    document.getElementById("page"+num).classList.add("active");
+}
+</script>
+
+</body>
+</html>
