@@ -27,13 +27,10 @@ body{
     display:none;
     padding:40px 20px;
     min-height:100vh;
-    opacity:0;
-    transition:0.6s;
 }
 
 .active{
     display:block;
-    opacity:1;
 }
 
 button{
@@ -45,11 +42,6 @@ button{
     color:#ff4b5c;
     cursor:pointer;
     margin:10px;
-    transition:0.3s;
-}
-
-button:hover{
-    transform:scale(1.1);
 }
 
 input{
@@ -61,15 +53,9 @@ input{
 
 img{
     border-radius:15px;
-    animation:floatPic 3s ease-in-out infinite alternate;
+    width:130px;
 }
 
-@keyframes floatPic{
-    from{transform:translateY(0);}
-    to{transform:translateY(-10px);}
-}
-
-/* หน้า1 */
 .password-row{
     display:flex;
     justify-content:center;
@@ -78,35 +64,12 @@ img{
     margin-top:20px;
 }
 
-.password-row img{
-    width:130px;
-}
-
-/* หน้า2 */
 .layout2-bottom,
 .layout3-top,
 .layout3-bottom{
     display:flex;
     justify-content:space-around;
     margin-top:30px;
-}
-
-.layout2-bottom img,
-.layout3-top img,
-.layout3-bottom img{
-    width:130px;
-}
-
-/* เอฟเฟกต์หัวใจ */
-.heart{
-    position:fixed;
-    bottom:-10px;
-    animation:float 6s linear infinite;
-}
-
-@keyframes float{
-    0%{transform:translateY(0);opacity:1;}
-    100%{transform:translateY(-100vh);opacity:0;}
 }
 
 .startScreen{
@@ -118,6 +81,17 @@ img{
     align-items:center;
     flex-direction:column;
     z-index:999;
+}
+
+.heart{
+    position:fixed;
+    bottom:-10px;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);opacity:1;}
+    100%{transform:translateY(-100vh);opacity:0;}
 }
 </style>
 </head>
@@ -151,11 +125,25 @@ img{
 
     <img src="IMG_1965.jpeg" width="160">
 
-    <p style="margin:40px 0;font-size:18px;">
-    🌻Happy Valentine's Day🌹<br><br>
-    ขอให้เธออยู่เป็นของขวัญแบบนี้ทุกปี  
-    ไม่ว่าเธอจะร้องไห้หรือยิ้ม  
-    เค้าจะอยู่ตรงนี้กับเธอเสมอ ❤️
+   <p style="margin:40px 0;font-size:18px;line-height:1.8;">
+🌻Happy Valentine's Day🌹<br><br>
+
+สุขสันต์วันวาเลนไทน์นะเธอ 💕<br>
+ขอให้เธออยู่เป็นของขวัญวันวาเลนไทน์ให้เค้าแบบนี้ไปทุกๆปีเลยนะ<br>
+อยากให้เธอรู้ว่าเธอยังมีเค้าอยู่ข้างๆเสมอ 🤍<br><br>
+
+ขอบคุณนะ…<br>
+ขอบคุณที่เข้ามาในชีวิต<br>
+ขอบคุณที่เข้ามาสร้างรอยยิ้ม<br>
+ขอบคุณที่คอยเป็นเชฟโชน 🍳<br>
+ขอบคุณที่โอบกอดเค้าด้วยความรัก<br>
+ขอบคุณที่คอยอยู่ข้างๆเค้า<br>
+ขอบคุณทุกอย่างเลยนะ<br>
+และขอบคุณที่ยังไม่ไปไหนนะ<br><br>
+
+เค้ารู้สึกโชคดีตั้งแต่เธอเข้ามาเลย ✨<br>
+เค้าอยากมีเธอตลอดไปเลยนะ 💖
+</p>
     </p>
 
     <div class="layout2-bottom">
@@ -176,9 +164,10 @@ img{
         <img src="IMG_4732.jpeg">
     </div>
 
-    <p style="margin:40px 0;font-size:20px;">
-    เค้ารักเธอน๊า อยู่ด้วยกันไปนานๆนะ ❤️
-    </p>
+    <p style="margin:40px 0;font-size:20px;line-height:1.8;">
+😊 เค้ารักเธอน๊าคนเก่งของเค้า ❤️<br>
+อยู่กับเค้าไปนานๆนะ 💕
+</p>
 
     <div class="layout3-bottom">
         <img src="IMG_5565.jpeg">
@@ -188,14 +177,37 @@ img{
     <button onclick="nextPage(2)">ย้อนกลับ ⬅️</button>
 </div>
 
-<div id="music"></div>
+<!-- ซ่อน YouTube Player -->
+<div id="player" style="display:none;"></div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
 const correctPassword="100643";
+let player;
+
+function onYouTubeIframeAPIReady(){
+    player = new YT.Player('player',{
+        height:'0',
+        width:'0',
+        videoId:'guCCAF-fkNI',
+        playerVars:{
+            autoplay:0,
+            controls:0,
+            start:20,
+            loop:1,
+            playlist:'guCCAF-fkNI',
+            rel:0
+        }
+    });
+}
 
 function startLove(){
     document.getElementById("startScreen").style.display="none";
-    playMusic();
+    if(player){
+        player.seekTo(20);
+        player.playVideo();
+    }
 }
 
 function checkPassword(){
@@ -208,19 +220,8 @@ function checkPassword(){
 }
 
 function nextPage(num){
-    document.querySelectorAll(".page").forEach(p=>{
-        p.classList.remove("active");
-    });
-    setTimeout(()=>{
-        document.getElementById("page"+num).classList.add("active");
-    },100);
-}
-
-function playMusic(){
-    document.getElementById("music").innerHTML=
-    `<iframe width="0" height="0"
-    src="https://www.youtube.com/embed/guCCAF-fkNI?start=20&autoplay=1&loop=1&playlist=guCCAF-fkNI"
-    allow="autoplay"></iframe>`;
+    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+    document.getElementById("page"+num).classList.add("active");
 }
 
 /* หัวใจลอย */
