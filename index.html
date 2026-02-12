@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สำหรับเธอคนเดียว ❤️</title>
+
+<style>
+body{
+    margin:0;
+    font-family:sans-serif;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    text-align:center;
+    color:white;
+}
+
+.page{
+    display:none;
+    padding:40px 20px;
+}
+
+.active{
+    display:block;
+}
+
+img{
+    width:250px;
+    border-radius:20px;
+    margin:15px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    font-size:16px;
+    background:white;
+    color:#ff4b5c;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+input{
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+.gallery img{
+    width:160px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- หน้า 1 ใส่รหัส -->
+<div class="page active" id="page1">
+    <h1>เว็บนี้สำหรับเธอ 💕</h1>
+    <img src="https://via.placeholder.com/250" alt="รูปเรา">
+    <p>ใส่รหัสก่อนเข้าได้ไหม 😝</p>
+    <input type="password" id="password" placeholder="ใส่รหัส">
+    <br>
+    <button onclick="checkPassword()">เข้าเลย 💖</button>
+</div>
+
+<!-- หน้า 2 บอกความรู้สึก -->
+<div class="page" id="page2">
+    <h1>มีอะไรอยากบอก 💌</h1>
+    <p>
+        ตั้งแต่วันที่เราได้รู้จักกัน  
+        ชีวิตเราก็มีความหมายมากขึ้น  
+        ขอบคุณที่อยู่ข้างกันเสมอ ❤️
+    </p>
+    <button onclick="nextPage(3)">ต่อไป 💕</button>
+</div>
+
+<!-- หน้า 3 รวมรูป -->
+<div class="page" id="page3">
+    <h1>ความทรงจำของเรา 📸</h1>
+    <div class="gallery">
+        <img src="https://via.placeholder.com/200">
+        <img src="https://via.placeholder.com/200">
+        <img src="https://via.placeholder.com/200">
+    </div>
+    <p style="font-size:20px;margin-top:20px;">
+        รักเธอที่สุดเลยนะ อยู่ด้วยกันไปนาน ๆ 💖
+    </p>
+</div>
+
+<!-- เพลง (เล่นตอนใส่รหัสถูก) -->
+<div id="music"></div>
+
+<script>
+const correctPassword = "100643"; // 🔥 เปลี่ยนรหัสตรงนี้
+
+function checkPassword(){
+    const input = document.getElementById("password").value;
+    if(input === correctPassword){
+        nextPage(2);
+        playMusic();
+    }else{
+        alert("รหัสผิดนะคนสวย 😝");
+    }
+}
+
+function nextPage(num){
+    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+    document.getElementById("page"+num).classList.add("active");
+}
+
+function playMusic(){
+    document.getElementById("music").innerHTML =
+    `<iframe width="0" height="0"
+    src="https://www.youtube.com/embed/OtlM0vbeEZZ8nddO autoplay=1&loop=1&playlist=ใส่รหัสเพลงตรงนี้"
+    allow="autoplay"></iframe>`;
+}
+</script>
+
+</body>
+</html>
