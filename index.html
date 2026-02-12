@@ -1,150 +1,107 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-<html lang="th">
+<html>
 <head>
 <meta charset="UTF-8">
+<title>For You ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>สำหรับเธอคนเดียว ❤️</title>
-    
+
 <style>
 body{
     margin:0;
     font-family:sans-serif;
     text-align:center;
-    color:white;
-    overflow-x:hidden;
-    background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#ffdde1,#ee9ca7);
-    background-size:400% 400%;
-    animation:bgMove 10s ease infinite;
+    background:#ffe6f0;
 }
-@keyframes bgMove{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+
+.page{
+    display:none;
+    padding:40px 20px;
 }
-.page{display:none;padding:40px 20px;min-height:100vh;}
-.active{display:block;}
+
+.active{
+    display:block;
+}
+
 button{
-    padding:10px 20px;border:none;border-radius:25px;
-    background:white;color:#ff4b5c;margin:10px;
+    padding:12px 25px;
+    font-size:16px;
+    border:none;
+    border-radius:10px;
+    background:#ff4d88;
+    color:white;
+    cursor:pointer;
 }
-input{padding:10px;border:none;border-radius:10px;text-align:center;}
-img{border-radius:15px;width:130px;}
-.password-row{
-    display:flex;justify-content:center;align-items:center;gap:20px;margin-top:20px;
-}
-.layout2-bottom,.layout3-top,.layout3-bottom{
-    display:flex;justify-content:space-around;margin-top:30px;
-}
-.startScreen{
-    position:fixed;inset:0;background:black;
-    display:flex;justify-content:center;align-items:center;
-    flex-direction:column;z-index:999;
-}
-.heart{
-    position:fixed;bottom:-10px;
-    animation:float 6s linear infinite;
-}
-@keyframes float{
-    0%{transform:translateY(0);opacity:1;}
-    100%{transform:translateY(-100vh);opacity:0;}
+
+input{
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
 }
 </style>
 </head>
 
 <body>
 
-<div class="startScreen" id="startScreen">
-    <h2>กดเพื่อเริ่มความรัก 💖</h2>
+<!-- หน้าเริ่ม -->
+<div id="startScreen" class="page active">
+    <h1>กดปุ่มเพื่อเริ่ม 💖</h1>
     <button onclick="startLove()">เริ่มเลย</button>
 </div>
 
-<div class="page active" id="page1">
-    <h1>เว็บนี้สำหรับเธอ 💕</h1>
-    <div class="password-row">
-        <img src="IMG_1992.jpeg">
-        <div>
-            <p>ใส่รหัสก่อนเข้าได้ไหม 😝</p>
-            <input type="password" id="password">
-            <br>
-            <button onclick="checkPassword()">เข้าเลย 💖</button>
-        </div>
-        <img src="IMG_1993.jpeg">
-    </div>
+<!-- หน้า 2 -->
+<div id="page2" class="page">
+<h2>🌻Happy Valentine's Day🌹</h2>
+<p>
+สุขสันต์วันวาเลนไทน์นะเธอ ขอให้เธออยู่เป็นของขวัญวันวาเลนไทน์ให้เค้าแบบนี้ไปทุกๆปีเลยนะ<br><br>
+อยากให้เธอรู้ว่าเธอยังมีเค้าอยู่ข้างๆเสมอ<br><br>
+ขอบคุณนะ<br>
+ขอบคุณที่เข้ามาในชีวิต<br>
+ขอบคุณที่เข้ามาสร้างรอยยิ้ม<br>
+ขอบคุณที่คอยเป็นเชฟโชน<br>
+ขอบคุณที่โอบกอดเค้าด้วยความรัก<br>
+ขอบคุณที่คอยอยู่ข้างๆเค้า<br>
+ขอบคุณทุกอย่างเลยนะ<br>
+และขอบคุณที่ยังไม่ไปไหนนะ<br><br>
+เค้ารู้สึกโชคดีตั้งแต่เธอเข้ามาเลย<br>
+เค้าอยากมีเธอตลอดไปเลยนะ
+</p>
+
+<button onclick="nextPage(3)">ต่อไป</button>
 </div>
 
-<div class="page" id="page2">
-    <h1>หน้า2 💌</h1>
-    <img src="IMG_1965.jpeg" width="160">
-    <p style="margin:40px 0;line-height:1.8;">
-🌻Happy Valentine's Day🌹<br><br>
-สุขสันต์วันวาเลนไทน์นะเธอ 💕<br>
-ขอให้เธออยู่เป็นของขวัญแบบนี้ทุกปี<br>
-เธอยังมีเค้าอยู่ข้างๆเสมอ 🤍<br><br>
-เค้าอยากมีเธอตลอดไปเลยนะ 💖
-    </p>
-    <div class="layout2-bottom">
-        <img src="IMG_4793.jpeg">
-        <img src="IMG_4872.jpeg">
-    </div>
-    <button onclick="nextPage(3)">ต่อไป 💕</button>
-    <button onclick="nextPage(1)">ย้อนกลับ ⬅️</button>
+<!-- หน้า 3 -->
+<div id="page3" class="page">
+<h2>😊-เค้ารักเธอน๊าคนเก่งของเค้า อยู่กับเค้าไปนานๆนะ-❤️</h2>
 </div>
 
-<div class="page" id="page3">
-    <h1>หน้า3 📸</h1>
-    <div class="layout3-top">
-        <img src="IMG_4590.jpeg">
-        <img src="IMG_4732.jpeg">
-    </div>
-    <p style="margin:40px 0;line-height:1.8;">
-😊 เค้ารักเธอน๊าคนเก่งของเค้า ❤️<br>
-อยู่กับเค้าไปนานๆนะ 💕
-    </p>
-    <div class="layout3-bottom">
-        <img src="IMG_5565.jpeg">
-        <img src="IMG_9267.jpeg">
-    </div>
-    <button onclick="nextPage(2)">ย้อนกลับ ⬅️</button>
-</div>
-
-<div id="player" style="display:none;"></div>
+<!-- YouTube ซ่อน -->
+<div id="player"></div>
 
 <script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
-const correctPassword="100643";
 let player;
-let ready=false;
 
 function onYouTubeIframeAPIReady(){
-    player=new YT.Player('player',{
+    player = new YT.Player('player',{
         height:'0',
         width:'0',
         videoId:'guCCAF-fkNI',
-        events:{'onReady':()=>{ready=true;}},
         playerVars:{
-            start:20,
-            loop:1,
-            playlist:'guCCAF-fkNI',
+            autoplay:0,
             controls:0,
-            rel:0
+            start:20
         }
     });
 }
 
 function startLove(){
-    document.getElementById("startScreen").style.display="none";
-    if(ready){
-        player.playVideo();
-    }
-}
+    document.getElementById("startScreen").classList.remove("active");
+    document.getElementById("page2").classList.add("active");
 
-function checkPassword(){
-    if(document.getElementById("password").value===correctPassword){
-        nextPage(2);
-    }else{
-        alert("รหัสผิดนะคนสวย 😝");
+    if(player){
+        player.seekTo(20);
+        player.playVideo();
     }
 }
 
@@ -152,16 +109,6 @@ function nextPage(num){
     document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
     document.getElementById("page"+num).classList.add("active");
 }
-
-setInterval(()=>{
-    const heart=document.createElement("div");
-    heart.className="heart";
-    heart.innerHTML="💖";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.fontSize=(15+Math.random()*25)+"px";
-    document.body.appendChild(heart);
-    setTimeout(()=>heart.remove(),6000);
-},600);
 </script>
 
 </body>
